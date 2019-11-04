@@ -8,8 +8,8 @@
       <img src="../img/user2.png" id="user" alt="用户">
       <p id="title">用户登录</p>
       <form action="">
-        <input type="text" class="ip"  placeholder="用户名" v-model="formMess.account">
-        <input type="password" class="ip" placeholder="密码" v-model="formMess.act_pwd">
+        <input type="text" class="ip"  placeholder="用户名" v-model="teaNumber">
+        <input type="password" class="ip" placeholder="密码" v-model="teaPass">
       </form>
       <button class="but" @click="onSubmit()">登录</button>
     </div>
@@ -24,16 +24,20 @@
         name: "login",
         data() {
             return {
-                formMess: {
-                    "account": "",
-                    "act_pwd": ""
-                }
+                    "teaNumber": "",
+                    "teaPass": ""
+
             };
         },
         methods: {
             onSubmit() {
-                console.log(this.formMess.account)
-                console.log(this.formMess.act_pwd)
+                var that = this;
+                let data = {"teaNumber":this.teaNumber,"name":this.teaPass};
+                this.$request
+                .post('/login',data)
+                    .then(res=>{
+                        console.log(res);
+                    })
                 this.$router.push('/index')
             }
         }
@@ -67,7 +71,7 @@
   .header p{
     position: absolute;
     top: 30%;
-    left: 32%;
+    right: 10%;
     font-size: 32px;
 
   }
