@@ -1,8 +1,8 @@
 <template>
     <div class="box">
-      <form action="">
-        <ul>
-          <li>活动主题<input type="text" v-model="theme"></li>
+      <form action="" class="form">
+        <ul class="col-sm-12">
+          <li>活动主题<input type="text" v-model="theme" ></li>
           <li>活动时间<input type="text" v-model="time"></li>
           <li>活动地点<input type="text" v-model="address"></li>
           <li>活动简介</li>
@@ -34,8 +34,9 @@
                 var day = date.getDate();
                 var publish_time = year + '-' + month + '-' + day;
                 let data = {"theme":this.theme,"time":this.time,
-                            "address":this.address,"introduction":this.introduction
-                            "publisher":,"publish_time":this.publish_time};
+                            "address":this.address,"introduction":this.introduction,
+                            "publisher": this.publisher ,
+                            "publish_time":this.publish_time};
                 console.log(this.teaNumber)
                 console.log(this.teaPass)
                 this.$request

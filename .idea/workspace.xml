@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="63d076fc-d7f8-48a4-9b0d-e9eac3a066e1" name="Default Changelist" comment="" />
+    <list default="true" id="63d076fc-d7f8-48a4-9b0d-e9eac3a066e1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/manager/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/manager/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/pubact.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/pubact.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/秦墨涵/秦墨涵" beforePathEscaped="$PROJECT_DIR$/秦墨涵🐂🍺/秦墨涵🐂🍺" beforeDir="false" afterPath="$PROJECT_DIR$/秦墨涵/秦墨涵" afterPathEscaped="$PROJECT_DIR$/秦墨涵🐂🍺/秦墨涵🐂🍺" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +27,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
     <exe-path />
@@ -24,8 +38,15 @@
   </component>
   <component name="ProjectId" id="1T30jemREacQLZwYmh0GnKYr1iI" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../prac-manage-master/prac-manage-master/prac-manage-frontend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../pizza-app" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
@@ -93,10 +114,22 @@
       <updated>1572673607624</updated>
       <workItem from="1572673608920" duration="11616000" />
       <workItem from="1572688182237" duration="614000" />
+      <workItem from="1573140729593" duration="2625000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

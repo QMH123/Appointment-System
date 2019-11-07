@@ -13,12 +13,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/login'
-    },
-    {
-      path:'/login',
-      name:'login',
-      component: login
+      redirect: '/index'
     },
     {
       path:'/index',
@@ -45,6 +40,11 @@ export default new Router({
           component: history
         },
       ]
+    },
+    {
+      path:'/login',
+      name:'login',
+      component: login
     },
     {
       path: '*',
