@@ -149,7 +149,7 @@
     top: 15%;
     left: 20%;
     width: 80%;
-    height: 75%;
+    height: 85%;
   }
 
   #tx{

@@ -32,13 +32,16 @@
         methods: {
             onSubmit() {
                 var that = this;
-                let data = {"teaNumber":this.teaNumber,"name":this.teaPass};
+                let data = {"teaNumber":this.teaNumber,"teaPass":this.teaPass};
+                console.log(this.teaNumber)
+                console.log(this.teaPass)
                 this.$request
                 .post('/login',data)
                     .then(res=>{
+
                         console.log(res);
                     })
-                this.$router.push('/index')
+
             }
         }
     }
