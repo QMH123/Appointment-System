@@ -2,13 +2,17 @@
     <div class="box">
       <form action="" class="form">
         <ul class="col-sm-12">
-          <li>活动主题<input type="text" v-model="theme" ></li>
-          <li>活动时间<input type="text" v-model="time"></li>
-          <li>活动地点<input type="text" v-model="address"></li>
-          <li>活动简介</li>
+          <li class="input-group">活动主题<input type="text" v-model="theme" class="form-control"></li>
+          <li class="input-group">活动时间<input type="text" v-model="time" class="form-control"></li>
+          <li class="input-group">活动地点<input type="text" v-model="address" class="form-control"></li>
+          <li >活动简介</li>
         </ul>
-        <textarea name="info" id="info" v-model="introduction"></textarea>
-          <button @click="publish">发布活动</button>
+        <div class="input-group">
+          <textarea name="info" id="info" v-model="introduction" class="form-control" rows="11"></textarea>
+        </div>
+        <div class="btn-group">
+          <button @click="publish" class="btn  btn-primary">发布活动</button>
+        </div>
       </form>
 
   </div>
@@ -87,9 +91,6 @@
     font-family: ' DFKai-SB';
     height: 25px;
     margin-left: 50px;
-    border-style: none;
-    border-bottom: 1px solid #18306e;
-    outline: none;
     background-color: #fffefa;
 
   }
@@ -106,10 +107,12 @@
     position: relative;
     top: 60px;
     font-size: 20px;
-    color: white;
-    background-color: #18306e;
     height: 60px;
     width: 150px;
+  }
+
+  .input-group > textarea{
+    height: 400px;
   }
 
 </style>

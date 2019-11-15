@@ -7,11 +7,13 @@
     <div class="from_box">
       <img src="../img/user2.png" id="user" alt="用户">
       <p id="title">用户登录</p>
-      <form action="">
-        <input type="text" class="ip"  placeholder="用户名" v-model="teaNumber">
-        <input type="password" class="ip" placeholder="密码" v-model="teaPass">
+      <form action="" class="form-group">
+        <input type="text"   placeholder="用户名" v-model="teaNumber" class="form-control ip">
+        <input type="password"  placeholder="密码" v-model="teaPass" class="form-control ip">
       </form>
-      <button class="but" @click="onSubmit()">登录</button>
+      <div class="brn-group">
+        <button class="but btn-primary" @click="onSubmit()" >登录</button>
+      </div>
     </div>
   </div>
 
@@ -88,12 +90,15 @@
   }
 
   .from_box{
+    background-color: #EDEDED;
     position: absolute;
     top: 30%;
     right: 10%;
     height: 300px;
     width: 400px;
-    background-color: white;
+    opacity: 0.8;
+    border: 1px gray solid;
+    border-radius: 10px;
   }
 
   .from_box form{
@@ -117,10 +122,7 @@
     width: 60%;
     left: 20%;
     height: 30px;
-    background-color: #18306e;
-    border-style: none;
     font-size: 15px;
-    color: white;
   }
 
   #title{

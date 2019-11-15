@@ -1,10 +1,23 @@
 <template>
-    <h1>历史活动</h1>
+    <div id="history">
+      <div>
+
+      </div>
+    </div>
 </template>
 
 <script>
     export default {
-        name: "history"
+        name: "history",
+        data(){
+            return {
+                Inf : [{
+                    actTime:"",
+                    actTheme:""
+                }]
+            }
+        },
+
     }
 </script>
 

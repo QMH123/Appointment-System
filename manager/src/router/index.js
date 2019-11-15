@@ -13,7 +13,12 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/index'
+      redirect: '/login'
+    },
+    {
+      path:'/login',
+      name:'login',
+      component: login
     },
     {
       path:'/index',
@@ -41,11 +46,7 @@ export default new Router({
         },
       ]
     },
-    {
-      path:'/login',
-      name:'login',
-      component: login
-    },
+
     {
       path: '*',
       name : "404NotFound",
