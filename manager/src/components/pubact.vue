@@ -73,7 +73,7 @@
     top: 5%;
     left: 20%;
     width: 60%;
-    height: 85%;
+    height: 95%;
     font-size: 20px;
     font-family: ' DFKai-SB';
     font-weight: 400;

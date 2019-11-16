@@ -110,15 +110,16 @@
     height: 15%;
     width: 100%;
     background-color: #18306e;
+    z-index: 1;
   }
 
 
   .nav{
     position: fixed;
-    top: 15%;
+    top: 0;
     left: 0;
     width: 20%;
-    height: 85%;
+    height: 100%;
     background-color: #1f7ae1;
   }
 
@@ -154,7 +155,7 @@
 
   #tx{
     position: relative;
-    top: 10%;
+    top: 15%;
     left: 25%;
     width: 60%;
     height: 180px;
