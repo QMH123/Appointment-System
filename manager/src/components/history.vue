@@ -1,126 +1,86 @@
+
+// table.vue
 <template>
-    <div id="history">
-      <div v-for="inf in Inf" id="headBox">
-        <div class="everyBlock">
-          <div>发布时间: {{inf.actTime}}</div>
-          <div>发布人:{{inf.whoDoAct}}</div>
-          <div>题目: {{inf.actTheme}}</div>
-          <div>地点: {{inf.actPlace}}</div>
-          <div>内容介绍:{{inf.actInf}}</div>
-        </div>
-      </div>
-      <div id="pageNav">
-        <nav aria-label="Page navigation">
-          <ul class="pagination">
-
-            <li v-for="i in helpArray"  ><router-link to="/history" >{{i}}</router-link></li>
-
-          </ul>
-        </nav>
-      </div>
-    </div>
+  <Table :columns="columns10" :data="data9"></Table>
 </template>
-
 <script>
+    import expandRow from './table-expand.vue';
     export default {
-        name: "history",
-        props:[],//传给路由
-        routs:"/history",
-        data(){
+        components: { expandRow },
+        data () {
             return {
-                helpArray:[],//建立辅助数组
-                currentPage:1,
-                pageNum:0,
-
-                Inf : [{
-                    actTime:"2019.11.11",
-                    actTheme:"成电讲坛",
-                    actPlace:"三教401",
-                    actInf:"我们遇到什么困难，也不要怕，微笑着面对他，消除恐惧的办法就是面对恐惧",
-                    whoDoAct:"白龙飞"
-                },
+                columns10: [
                     {
-                        actTime:"2019.11.11",
-                        actTheme:"成电讲坛",
-                        actPlace:"三教401",
-                        actInf:"我们遇到什么困难，也不要怕，微笑着面对他，消除恐惧的办法就是面对恐惧",
-                        whoDoAct:"白龙飞"
+                        type: 'expand',
+                        width: 50,
+                        render: (h, params) => {
+                            return h(expandRow, {
+                                props: {
+                                    row: params.row
+                                }
+                            })
+                        }
                     },
                     {
-                        actTime:"2019.11.11",
-                        actTheme:"成电讲坛",
-                        actPlace:"三教401",
-                        actInf:"我们遇到什么困难，也不要怕，微笑着面对他，消除恐惧的办法就是面对恐惧",
-                        whoDoAct:"白龙飞"
+                        title: '活动名称',
+                        key: 'actName'
                     },
                     {
-                        actTime:"2019.11.11",
-                        actTheme:"成电讲坛",
-                        actPlace:"三教401",
-                        actInf:"我们遇到什么困难，也不要怕，微笑着面对他，消除恐惧的办法就是面对恐惧",
-                        whoDoAct:"白龙飞"
+                        title: '活动地点',
+                        key: 'actPlace'
                     },
                     {
-                        actTime:"2019.11.11",
-                        actTheme:"成电讲坛",
-                        actPlace:"三教401",
-                        actInf:"我们遇到什么困难，也不要怕，微笑着面对他，消除恐惧的办法就是面对恐惧",
-                        whoDoAct:"白龙飞"
+                        title: '活动时间',
+                        key: 'actTime'
+                    }
+                ],
+                data9: [
+                    {
+                        actName: 'John Brown',
+                        actTime: "2019.11.11",
+                        actPlace: 'New York No. 1 Lake Park',
+                        job: 'Data engineer',
+                        interest: 'badminton',
+                        birthday: '1991-05-14',
+                        book: 'Steve Jobs',
+                        movie: 'The Prestige',
+                        music: 'I Cry'
                     },
                     {
-                        actTime:"2019.11.11",
-                        actTheme:"成电讲坛",
-                        actPlace:"三教401",
-                        actInf:"我们遇到什么困难，也不要怕，微笑着面对他，消除恐惧的办法就是面对恐惧",
-                        whoDoAct:"白龙飞"
+                        actName: 'Jim Green',
+                        actTime: "2019.11.11",
+                        actPlace: 'London No. 1 Lake Park',
+                        job: 'Data Scientist',
+                        interest: 'volleyball',
+                        birthday: '1989-03-18',
+                        book: 'My Struggle',
+                        movie: 'Roman Holiday',
+                        music: 'My Heart Will Go On'
                     },
                     {
-                        actTime:"2019.11.11",
-                        actTheme:"成电讲坛",
-                        actPlace:"三教401",
-                        actInf:"我们遇到什么困难，也不要怕，微笑着面对他，消除恐惧的办法就是面对恐惧",
-                        whoDoAct:"白龙飞"
-                    }]
+                        actName: 'Joe Black',
+                        actTime: "2019.11.11",
+                        actPlace: 'Sydney No. 1 Lake Park',
+                        job: 'Data Product Manager',
+                        interest: 'tennis',
+                        birthday: '1992-01-31',
+                        book: 'Win',
+                        movie: 'Jobs',
+                        music: 'Don’t Cry'
+                    },
+                    {
+                        name: 'Jon Snow',
+                        age: 26,
+                        address: 'Ottawa No. 2 Lake Park',
+                        job: 'Data Analyst',
+                        interest: 'snooker',
+                        birthday: '1988-7-25',
+                        book: 'A Dream in Red Mansions',
+                        movie: 'A Chinese Ghost Story',
+                        music: 'actor'
+                    }
+                ]
             }
-        },
-        created() {
-            // console.log(this.$route.params);
-            const totalPage = this.Inf.length;
-            this.pageNum =  Math.trunc(totalPage / 4) + 1; //为了保证页数足够，应该向上取整，so+1
-            for (var i = 1 ; i <= this.pageNum ; i++){
-
-                this.helpArray.push(i);//把页面id数推进去
-            }
-            // console.log(this.helpArray)
         }
-
     }
 </script>
-
-<style scoped>
-  template{
-    position: relative;
-  }
-  #history{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-  }
-
-  .everyBlock{
-    width: 90%;
-    height: 20em;
-    background-color: #F9F9F9;
-    margin: 0 auto;
-  }
-
-  #headBox{
-    padding: 30px 0 30px;
-    border: 1px #EDEDED solid;
-    width: 90%;
-    border-radius: 20px;
-    margin: 5% auto;
-    box-shadow: 10px 10px 5px 1px #EDEDED ;
-  }
-</style>
