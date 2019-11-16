@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" style="height: 100%;">
     <div class="header">
       <img src="../img/xr.png" id="xr">
       <div class="greet">
@@ -114,7 +114,7 @@
 
 
   .nav{
-    position: absolute;
+    position: fixed;
     top: 15%;
     left: 0;
     width: 20%;
@@ -194,4 +194,6 @@
     font-size: 22px;
     text-align: center;
   }
+
+
 </style>

@@ -42,8 +42,13 @@ export default new Router({
         {
           path: '/history',
           name : 'historyLink',
-          component: history
+          component: history,
         },
+        {
+          path: '/history:id',
+          component:history,
+          props:true//接受history中的参数传入
+        }
       ]
     },
 
