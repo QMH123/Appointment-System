@@ -10,42 +10,38 @@
             return {
                 columns1: [
                     {
-                        title: 'Name',
-                        key: 'name'
+                        title: '活动名称',
+                        key: 'Name'
                     },
                     {
-                        title: 'Age',
-                        key: 'age'
+                        title: '活动时间',
+                        key: 'Time'
                     },
                     {
-                        title: 'Address',
+                        title: '活动地点',
                         key: 'address'
+                    },
+                    {
+                        title: '发布人',
+                        key: 'publisher'
+                    },
+                    {
+                        title: '预约详情',
+                        key: 'student'
                     }
                 ],
                 data1: [
                     {
-                        name: 'John Brown',
-                        age: 18,
-                        address: 'New York No. 1 Lake Park',
-                        date: '2016-10-03'
+                        Name: '一起Van♂游戏',
+                        Time: 2019-11-16,
+                        address: '沙河图书馆',
+                        publisher: '白龙飞'
                     },
                     {
-                        name: 'Jim Green',
-                        age: 24,
-                        address: 'London No. 1 Lake Park',
-                        date: '2016-10-01'
-                    },
-                    {
-                        name: 'Joe Black',
-                        age: 30,
-                        address: 'Sydney No. 1 Lake Park',
-                        date: '2016-10-02'
-                    },
-                    {
-                        name: 'Jon Snow',
-                        age: 26,
-                        address: 'Ottawa No. 2 Lake Park',
-                        date: '2016-10-04'
+                        Name: '一起Van♂游戏',
+                        Time: 2019-11-16,
+                        address: '沙河图书馆',
+                        publisher: '白龙飞'
                     }
                 ]
             }

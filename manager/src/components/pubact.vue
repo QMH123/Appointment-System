@@ -8,7 +8,7 @@
           <li >活动简介</li>
         </ul>
         <div class="input-group">
-          <textarea name="info" id="info" v-model="introduction" class="form-control" rows="11"></textarea>
+          <textarea name="info" id="info" v-model="introduction" class="form-control" rows="8" ></textarea>
         </div>
         <div class="btn-group">
           <button @click="publish" class="btn  btn-primary">发布活动</button>
@@ -63,7 +63,7 @@
     left: 10%;
     height: 97%;
     width: 80%;
-    background-color: #fffefa;
+    background-color: white;
     box-shadow: #494b47 3px 3px 10px;
     border-radius: 20px;
   }
@@ -91,7 +91,7 @@
     font-family: ' DFKai-SB';
     height: 25px;
     margin-left: 50px;
-    background-color: #fffefa;
+    background-color: white;
 
   }
 
@@ -112,7 +112,8 @@
   }
 
   .input-group > textarea{
-    height: 400px;
+    resize:none;
+    height: 250px;
   }
 
 </style>
