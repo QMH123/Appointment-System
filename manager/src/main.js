@@ -5,8 +5,10 @@ import App from './App'
 import router from './router'
 import request from './request'
 import axios from 'axios'
+import ViewUI from 'view-design';
+import 'view-design/dist/styles/iview.css';
 Vue.prototype.$request = request
-
+Vue.use(ViewUI);
 Vue.use(axios)
 
 Vue.config.productionTip = false
