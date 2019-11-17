@@ -2,6 +2,7 @@
 // table.vue
 <template>
     <div id="history" class="container">
+      <Input search enter-button="Search" v-model="search" @on-search="Search" placeholder="Enter something..." />
       <table class="table table-hover">
         <thead>
           <tr>
@@ -27,45 +28,47 @@
     export default {
         data () {
             return {
+                searchData:[],
+                search:"",
                 data9: [
                     {
-                        actName: 'John Brown',
+                        actName: '张三',
                         actTime: "2019.11.11",
                         actPlace: 'New York No. 1 Lake Park',
 
                     },
                     {
-                        actName: 'Jim Green',
+                        actName: '秦墨涵🐂🍺9',
                         actTime: "2019.11.11",
                         actPlace: 'London No. 1 Lake Park',
 
                     },
                     {
-                        actName: 'Joe Black',
+                        actName: '秦墨涵🐂🍺7',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
 
                     },
                     {
-                        actName: 'Joe Black',
+                        actName: '秦墨涵🐂🍺',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
 
                     },
                     {
-                        actName: 'Joe Black',
+                        actName: '秦墨涵🐂🍺1',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
 
                     },
                     {
-                        actName: 'Joe Black',
+                        actName: '秦墨涵🐂🍺2',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
 
                     },
                     {
-                        actName: 'Joe Black',
+                        actName: '秦墨涵🐂🍺3',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
 
@@ -103,14 +106,64 @@
 
             changePage(index){
                 console.log(index);
-                var _start = (index - 1) * this.pageSize;
-                var _end = index * this.pageSize;
+                let _start = (index - 1) * this.pageSize;
+                  let _end = index * this.pageSize;
                 this.historyData = this.ajaxHistoryData.slice(_start,_end);
+            },
+            Search() {
+                // search 是 v-model="search" 的 search
+                let search = this.search;
+                if (search) {
+                    this.searchData = this.data9.filter(function(product) {
+                        // 每一项数据
+                        //console.log(product)
+                        return Object.keys(product).some(function(key) {
+                            // 每一项数据的参数名
+                            // console.log(key)
+                            return (
+                                String(product[key])
+                                // toLowerCase() 方法用于把字符串转换为小写。
+                                    .toLowerCase()
+                                    // indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。
+                                    .indexOf(search) > -1
+                            );
+                        });
+                    });
+                    this.ajaxHistoryData = this.searchData;
+                    this.historyData = this.searchData;
+                    this.searchPageNum(this.searchData.length);
+                }
+                else{
+                    this.handleListApproveHistory();
+                }
+            },
+
+            searchPageNum(length){
+                if(length > this.pageSize)
+                {
+                    this.pageNum = (Math.trunc(this.ajaxHistoryData.length / this.pageSize) + 1 ) * 10;
+                }
+                else if(length < this.pageSize && length > 0)
+                {
+                    this.pageNum = (Math.trunc(this.ajaxHistoryData.length / this.pageSize) + 1 ) * 10;
+                }
+                else
+                {
+                    setTimeout(() => {
+                        alert("nmsl");
+                    },10)
+                    this.pageNum = 0;
+                }
             }
+
+
         },
         created(){
             this.handleListApproveHistory();
             console.log(this.pageNum);
+        },
+        computed:{
+
         }
     }
 </script>
