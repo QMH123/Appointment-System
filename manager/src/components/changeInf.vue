@@ -64,58 +64,58 @@
 
                     },
                     {
-                        actName: '搞黄色',
+                        actName: '搞黄色1',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
 
                     },
                     {
-                        actName: '搞红色',
+                        actName: '搞红色2',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
 
                     },
                     {
-                        actName: '搞绿色',
+                        actName: '搞绿色3',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
 
                     },
                     {
-                        actName: '搞蓝色',
+                        actName: '搞蓝色4',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
 
                     },{
-                        actName: '搞紫色',
+                        actName: '搞紫色5',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
 
                     },{
-                        actName: '搞黄色',
+                        actName: '搞黄色6',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
 
                     },
                     {
-                        actName: '搞红色',
+                        actName: '搞红色7',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
 
                     },
                     {
-                        actName: '搞绿色',
+                        actName: '搞绿色8',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
 
                     },
                     {
-                        actName: '搞蓝色',
+                        actName: '搞蓝色9',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
 
                     },{
-                        actName: '搞紫色',
+                        actName: '搞紫色10',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
 
@@ -142,7 +142,14 @@
                 }
                 else{
                     this.historyData = this.ajaxHistoryData.slice(0,this.pageSize);
-                    this.pageNum = (Math.trunc(this.ajaxHistoryData.length / this.pageSize) + 1 ) * 10;
+                    if(this.ajaxHistoryData.length % this.pageSize ===0)
+                    {
+                        this.pageNum = (this.ajaxHistoryData.length / this.pageSize) * 10;
+                    }
+                    else
+                    {
+                        this.pageNum = (Math.trunc(this.ajaxHistoryData.length / this.pageSize) + 1 ) * 10;
+                    }
 
                 }
             },
@@ -156,7 +163,7 @@
 
             searchPageNum(length){
                 if (length % this.pageSize === 0 && length !== 0){
-                    this.pageNum = length / this.pageSize;
+                    this.pageNum = (length / this.pageSize) * 10;
                 }
                 else if(length > this.pageSize)
                 {
@@ -173,6 +180,7 @@
                     },10)
                     this.pageNum = 0;
                 }
+
             },
 
             Search() {
@@ -195,13 +203,16 @@
                         });
                     });
                     this.ajaxHistoryData = this.searchData;
-                    this.historyData = this.searchData;
-                    this.searchPageNum(this.searchData.length);
+                    // this.historyData = this.searchData;
+                    this.searchPageNum(this.searchData.length);//处理搜索后页面问题
+                    this.historyData = this.ajaxHistoryData.slice(0,5);
                 }else{
                     this.handleListApproveHistory();
                 }
 
             }
+
+
 
         },
         created(){
