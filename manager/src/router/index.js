@@ -6,6 +6,7 @@ import pubAct from "../components/pubact";
 import index from "../components/index";
 import login from "../components/login";
 import moreInf from "../components/moreInf";
+import pubchange from "../components/pubchange";
 
 Vue.use(Router)
 
@@ -49,6 +50,11 @@ export default new Router({
           path: '/moreInf',
           name : 'moreInfLink',
           component: moreInf
+        },
+        {
+          path: '/pubchange',
+          name : 'pubchangeLink',
+          component: pubchange
         }
       ]
     },
