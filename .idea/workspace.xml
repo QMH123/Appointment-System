@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63d076fc-d7f8-48a4-9b0d-e9eac3a066e1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/manager/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/manager/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/src/components/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/src/components/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/src/components/pubact.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/pubact.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/秦墨涵/秦墨涵" beforePathEscaped="$PROJECT_DIR$/秦墨涵🐂🍺/秦墨涵🐂🍺" beforeDir="false" afterPath="$PROJECT_DIR$/秦墨涵/秦墨涵" afterPathEscaped="$PROJECT_DIR$/秦墨涵🐂🍺/秦墨涵🐂🍺" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/history.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/history.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/table-expand.vue" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,6 +43,11 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/manager/src/components" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -115,6 +113,8 @@
       <workItem from="1572673608920" duration="11616000" />
       <workItem from="1572688182237" duration="614000" />
       <workItem from="1573140729593" duration="2625000" />
+      <workItem from="1573953028649" duration="4635000" />
+      <workItem from="1573965248504" duration="96000" />
     </task>
     <servers />
   </component>
@@ -126,7 +126,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
