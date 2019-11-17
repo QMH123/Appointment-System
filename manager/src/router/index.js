@@ -5,6 +5,7 @@ import history from "../components/history";
 import pubAct from "../components/pubact";
 import index from "../components/index";
 import login from "../components/login";
+import moreInf from "../components/moreInf";
 
 Vue.use(Router)
 
@@ -45,9 +46,9 @@ export default new Router({
           component: history,
         },
         {
-          path: '/history:id',
-          component:history,
-          props:true//接受history中的参数传入
+          path: '/moreInf',
+          name : 'moreInfLink',
+          component: moreInf
         }
       ]
     },

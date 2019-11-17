@@ -16,12 +16,10 @@
               <td>{{data.actName}}</td>
               <td>{{data.actTime}}</td>
               <td>{{data.actPlace}}</td>
-              <td><router-link to="/history">详细信息</router-link></td>
-              <router-view></router-view>
+              <td><router-link :to="{name : 'moreInfLink' ,params: {actName : data.actName , actTime : data.actTime}}">详细信息</router-link></td>
             </tr>
           </tbody>
       </table>
-<!--      <Table :columns="columns10" :data="historyData" ></Table>-->
         <Page :total="pageNum" show-elevator  @on-change="changePage" />
     </div>
 </template>
@@ -34,89 +32,49 @@
                         actName: 'John Brown',
                         actTime: "2019.11.11",
                         actPlace: 'New York No. 1 Lake Park',
-                        job: 'Data engineer',
-                        interest: 'badminton',
-                        birthday: '1991-05-14',
-                        book: 'Steve Jobs',
-                        movie: 'The Prestige',
-                        music: 'I Cry'
+
                     },
                     {
                         actName: 'Jim Green',
                         actTime: "2019.11.11",
                         actPlace: 'London No. 1 Lake Park',
-                        job: 'Data Scientist',
-                        interest: 'volleyball',
-                        birthday: '1989-03-18',
-                        book: 'My Struggle',
-                        movie: 'Roman Holiday',
-                        music: 'My Heart Will Go On'
+
                     },
                     {
                         actName: 'Joe Black',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
-                        job: 'Data Product Manager',
-                        interest: 'tennis',
-                        birthday: '1992-01-31',
-                        book: 'Win',
-                        movie: 'Jobs',
-                        music: 'Don’t Cry'
+
                     },
                     {
                         actName: 'Joe Black',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
-                        job: 'Data Product Manager',
-                        interest: 'tennis',
-                        birthday: '1992-01-31',
-                        book: 'Win',
-                        movie: 'Jobs',
-                        music: 'Don’t Cry'
+
                     },
                     {
                         actName: 'Joe Black',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
-                        job: 'Data Product Manager',
-                        interest: 'tennis',
-                        birthday: '1992-01-31',
-                        book: 'Win',
-                        movie: 'Jobs',
-                        music: 'Don’t Cry'
+
                     },
                     {
                         actName: 'Joe Black',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
-                        job: 'Data Product Manager',
-                        interest: 'tennis',
-                        birthday: '1992-01-31',
-                        book: 'Win',
-                        movie: 'Jobs',
-                        music: 'Don’t Cry'
+
                     },
                     {
                         actName: 'Joe Black',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
-                        job: 'Data Product Manager',
-                        interest: 'tennis',
-                        birthday: '1992-01-31',
-                        book: 'Win',
-                        movie: 'Jobs',
-                        music: 'Don’t Cry'
+
                     },
                     {
                         actName: 'Joe Black',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
-                        job: 'Data Product Manager',
-                        interest: 'tennis',
-                        birthday: '1992-01-31',
-                        book: 'Win',
-                        movie: 'Jobs',
-                        music: 'Don’t Cry'
+
                     }
                 ],
                 pageSize : 5,//每页的信息条数
