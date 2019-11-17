@@ -130,8 +130,8 @@
                         });
                     });
                     this.ajaxHistoryData = this.searchData;
-                    this.historyData = this.searchData;
-                    this.searchPageNum(this.searchData.length);
+                    this.searchPageNum(this.searchData.length);//处理搜索后页面问题
+                    this.historyData = this.ajaxHistoryData.slice(0,5);
                 }
                 else{
                     this.handleListApproveHistory();
