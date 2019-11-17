@@ -1,60 +1,129 @@
 <template>
-  <div class="safetyInfo">
-    <Input search enter-button placeholder="输入活动名称搜索" v-model="search" @on-search="btn"/>
-    <table class="table table-hover">
-      <thead>
-      <tr>
-        <th>活动名称</th>
-        <th>活动时间</th>
-        <th>活动地点</th>
-        <th>详细信息</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="item in searchData">
-        <td>{{item.name}}</td>
-        <td>{{item.date}}</td>
-        <td>{{item.depart}}</td>
-        <td><router-link to="/history">详细信息</router-link></td>
-        <router-view></router-view>
-      </tr>
-      </tbody>
-    </table>
+<div>
+  <div>
+    <Input search enter-button="Search" v-model="search" @on-search="Search" placeholder="Enter something..." />
+  </div>
+  <!-- 搜索后的 -->
+
+
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <th>活动名称</th>
+      <th>活动时间</th>
+      <th>活动地点</th>
+      <th>修改信息</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr v-for="data in historyData">
+      <td>{{data.actName}}</td>
+      <td>{{data.actTime}}</td>
+      <td>{{data.actPlace}}</td>
+      <td><router-link :to="{name : 'moreInfLink' ,params: {actName : data.actName , actTime : data.actTime}}">详细信息</router-link></td>
+    </tr>
+    </tbody>
+
+  </table>
   </div>
 </template>
 <script>
     export default {
-        name: 'changeInf',
-        data () {
+        data() {
             return {
-                search:'',
-                searchData: '',
-                products:[
-                    //假数据
-                    {name:"数据1",date:'2018-01-04',depart:'泸化工1'},
-                    {name:"数据2",date:'2018-01-25',depart:'泸化工2'},
-                    {name:"数据3",date:'2018-02-10',depart:'泸化工3'},
-                    {name:"数据4",date:'2018-03-04',depart:'泸化工4'},
-                    {name:"数据5",date:'2018-05-24',depart:'泸化工5'},
-                    {name:"数据6",date:'2018-10-29',depart:'泸化工6'}
-                ]
-            }
-        },
-        methods:{
-            btn:function(){
+                search: "",
+                // 原本展示数据
+                list: [
+                    {
+                        actName: '银杏节马拉松',
+                        actTime: "2019.11.11",
+                        actPlace: 'New York No. 1 Lake Park',
 
+                    },
+                    {
+                        actName: '双十一剁手大会',
+                        actTime: "2019.11.11",
+                        actPlace: 'London No. 1 Lake Park',
+
+                    },
+                    {
+                        actName: '班级聚餐吃火锅',
+                        actTime: "2019.11.11",
+                        actPlace: 'Sydney No. 1 Lake Park',
+
+                    },
+                    {
+                        actName: '吃肯德基',
+                        actTime: "2019.11.11",
+                        actPlace: 'Sydney No. 1 Lake Park',
+
+                    },
+                    {
+                        actName: '吃食堂',
+                        actTime: "2019.11.11",
+                        actPlace: 'Sydney No. 1 Lake Park',
+
+                    },
+                    {
+                        actName: 'Joe Black',
+                        actTime: "2019.11.11",
+                        actPlace: 'Sydney No. 1 Lake Park',
+
+                    }
+                ],
+                // 搜索后的展示数据
+                searchData: [],
+                historyData:[],
+                pageSize : 5,//每页的信息条数
+                ajaxHistoryData:[],//初始化信息条数
+                dataCount:0,
+                pageNum:0 // 页数
+            };
+        },
+
+        methods: {
+            handleListApproveHistory(){
+                this.ajaxHistoryData = this.list;
+                // this.dataCount = 10;
+                if (this.ajaxHistoryData.length < this.pageSize)
+                {
+                    this.historyData = this.ajaxHistoryData; // historyData是每页展示
+                    this.pageNum = (Math.trunc(this.ajaxHistoryData.length / this.pageSize) + 1 ) * 10;
+                }
+                else{
+                    this.historyData = this.ajaxHistoryData.slice(0,this.pageSize);
+                    this.pageNum = (Math.trunc(this.ajaxHistoryData.length / this.pageSize) + 1 ) * 10;
+
+                }
+            },
+
+            Search() {
+                // search 是 v-model="search" 的 search
                 var search = this.search;
                 if (search) {
-                    this.searchData =  this.products.filter(function(product) {
-                        console.log(product)
+                    this.searchData = this.list.filter(function(product) {
+                        // 每一项数据
+                        // console.log(product)
                         return Object.keys(product).some(function(key) {
-                            console.log(key)
-                            return String(product[key]).toLowerCase().indexOf(search) > -1
-                        })
-                    })
+                            // 每一项数据的参数名
+                            // console.log(key)
+                            return (
+                                String(product[key])
+                                // toLowerCase() 方法用于把字符串转换为小写。
+                                    .toLowerCase()
+                                    // indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。
+                                    .indexOf(search) > -1
+                            );
+                        });
+                    });
                 }
-
+                this.historyData = this.searchData
             }
+        },
+        created(){
+            this.handleListApproveHistory();
+
         }
     }
 </script>
