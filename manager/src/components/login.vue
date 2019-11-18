@@ -32,16 +32,25 @@
             };
         },
         methods: {
-            onSubmit() {
+            onSubmit:function() {
+                //console.log("wdnmd");
                 var that = this;
-                let data = {"teaNumber":this.teaNumber,"teaPass":this.teaPass};
-                console.log(this.teaNumber);
-                console.log(this.teaPass);
+                //             let data = {"teaNumber":that.teaNumber,"name":that.teaPass};
+                // console.log(JSON.stringify(data));
                 this.$request
-                .post('/login',data)
+                    .get('/login',{
+                        params:{
+                            "teaNumber":that.teaNumber,
+                            "teaPass":that.teaPass
+                        }
+                    })
                     .then(res=>{
-                        console.log(res);
-                        this.$router.push('/index');
+                        console.log(res.data);
+                        if(res.data == 'null'){alert('账号密码错误!');}
+                        else{
+                            that.$router.push('/index')
+                        }
+
                     })
 
             }

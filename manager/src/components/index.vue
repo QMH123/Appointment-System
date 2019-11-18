@@ -17,7 +17,7 @@
       <ul class="navbar-nav">
         <li><router-link  :to="{name : 'pubActLink'}" class="nav-link">发布活动</router-link></li>
         <li><router-link  :to="{name : 'historyLink'}" class="nav-link">查询历史活动</router-link></li>
-        <li><router-link  :to="{name : 'changeInfLink'}" class="nav-link">修改活动信息</router-link></li>
+        <li><router-link  :to="{name : 'changeInfLink'}" class="nav-link">修改我的发布</router-link></li>
       </ul>
     </div>
     <div id="Inf">

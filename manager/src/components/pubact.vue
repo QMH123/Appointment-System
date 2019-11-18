@@ -133,6 +133,7 @@
     width: 150px;
   }
 
+
   .input-group > textarea{
     resize:none;
     height: 250px;
