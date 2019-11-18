@@ -10,9 +10,15 @@
         <div class="input-group">
           <textarea name="info" id="info" v-model="introduction" class="form-control" rows="8" ></textarea>
         </div>
-        <div class="btn-group">
-          <button @click="publish" class="btn  btn-primary">发布活动</button>
+        <div class="checkbox" id="checkbox">
+          <label>
+            <input type="checkbox" v-model="isSerious">紧急事件
+          </label>
         </div>
+        <div class="btn-group">
+          <button  @click="publish" class="btn  btn-primary">发布活动</button>
+        </div>
+
       </form>
 
   </div>
@@ -27,28 +33,44 @@
                 theme:'',
                 time:'',
                 address:'',
-                introduction:''
+                introduction:'',
+                isSerious: false
             }
         },
         methods:{
             publish() {
-                var date = new Date();
-                var year = date.getFullYear();
-                var month = date.getMonth() + 1;
-                var day = date.getDate();
-                var publish_time = year + '-' + month + '-' + day;
+                let date = new Date();
+                let year = date.getFullYear();
+                let month = date.getMonth() + 1;
+                let day = date.getDate();
+                let publish_time = year + '-' + month + '-' + day;
+                //判断
+                if (this.theme === "")
+                {
+                    alert("主题不能为空，请更改信息.");
+                    return ;
+                }
+                else if (this.address === "")
+                {
+                    alert("地址不能为空，请更改信息.");
+                    return ;
+                }
+                else if (this.time === "")
+                {
+                    alert("时间不能为空，请更改信息.")
+                    return;
+                }
                 let data = {"theme":this.theme,"time":this.time,
                             "address":this.address,"introduction":this.introduction,
-                            "publisher": this.publisher ,
-                            "publish_time":this.publish_time};
-                console.log(this.teaNumber)
-                console.log(this.teaPass)
-                this.$request
-                    .post('/login',data)
-                    .then(res=>{
-
-                        console.log(res);
-                    })
+                            "publisher": this.publisher , "isSerious" : this.isSerious,
+                            "publish_time": publish_time};
+                console.log(data);
+                // this.$request
+                //     .post('/login',data)
+                //     .then(res=>{
+                //
+                //         console.log(res);
+                //     })
 
             }
 
@@ -115,5 +137,10 @@
     resize:none;
     height: 250px;
   }
+
+  #checkbox{
+    margin-top: 20px;
+  }
+
 
 </style>
