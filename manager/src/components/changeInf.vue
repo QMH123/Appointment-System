@@ -12,15 +12,17 @@
       <th>活动地点</th>
       <th>发布人</th>
       <th>修改信息</th>
+      <th>删除信息</th>
     </tr>
     </thead>
     <tbody>
-    <tr v-for="data in historyData">
-      <td>{{data.actName}}</td>
+    <tr v-for="(data,index) in historyData">
+      <td>{{data.actTitle}}</td>
       <td>{{data.actTime}}</td>
       <td>{{data.actPlace}}</td>
-      <td>{{data.publisher}}</td>
-      <td><router-link :to="{name : 'pubchangeLink' ,params: {actName : data.actName , actTime : data.actTime}}">修改信息</router-link></td>
+      <td>{{data.teaName}}</td>
+      <td><router-link :to="{name : 'pubchangeLink' ,params: {actTitle : data.actTitle , actTime : data.actTime,actPlace : data.actPlace, actIntro: data.actIntro, actid:data.actid}}">修改信息</router-link></td>
+      <td> <button @click="toDelete(index)">删除信息</button> </td>
     </tr>
     </tbody>
   </table>
@@ -29,100 +31,102 @@
   </div>
 </template>
 <script>
+  import axios from 'axios'
     export default {
+      name:"changeInf",
         data() {
             return {
                 search: "",
                 // 原本展示数据
                 list: [
-                    {
-                        actName: '银杏节马拉松',
-                        actTime: "2019.11.11",
-                        actPlace: 'New York No. 1 Lake Park',
-                        publisher:'白龙飞'
-                    },
-                    {
-                        actName: '双十一剁手大会',
-                        actTime: "2019.11.11",
-                        actPlace: 'London No. 1 Lake Park',
-                        publisher:'张诗涵'
-
-                    },
-                    {
-                        actName: '班级聚餐吃火锅',
-                        actTime: "2019.11.11",
-                        actPlace: 'Sydney No. 1 Lake Park',
-                        publisher:'白龙飞'
-                    },
-                    {
-                        actName: '吃肯德基',
-                        actTime: "2019.11.11",
-                        actPlace: 'Sydney No. 1 Lake Park',
-                        publisher:'白龙飞'
-                    },
-                    {
-                        actName: '吃食堂',
-                        actTime: "2019.11.11",
-                        actPlace: 'Sydney No. 1 Lake Park',
-                        publisher:'张诗涵'
-                    },
-                    {
-                        actName: '搞黄色1',
-                        actTime: "2019.11.11",
-                        actPlace: 'Sydney No. 1 Lake Park',
-                        publisher:'肖文淼'
-                    },
-                    {
-                        actName: '搞红色2',
-                        actTime: "2019.11.11",
-                        actPlace: 'Sydney No. 1 Lake Park',
-                        publisher:'张诗涵'
-                    },
-                    {
-                        actName: '搞绿色3',
-                        actTime: "2019.11.11",
-                        actPlace: 'Sydney No. 1 Lake Park',
-                        publisher:'肖文淼'
-                    },
-                    {
-                        actName: '搞蓝色4',
-                        actTime: "2019.11.11",
-                        actPlace: 'Sydney No. 1 Lake Park',
-                        publisher:'白龙飞'
-                    },{
-                        actName: '搞紫色5',
-                        actTime: "2019.11.11",
-                        actPlace: 'Sydney No. 1 Lake Park',
-                        publisher:'白龙飞'
-                    },{
-                        actName: '搞黄色6',
-                        actTime: "2019.11.11",
-                        actPlace: 'Sydney No. 1 Lake Park',
-                        publisher:'肖文淼'
-                    },
-                    {
-                        actName: '搞红色7',
-                        actTime: "2019.11.11",
-                        actPlace: 'Sydney No. 1 Lake Park',
-                        publisher:'白龙飞'
-                    },
-                    {
-                        actName: '搞绿色8',
-                        actTime: "2019.11.11",
-                        actPlace: 'Sydney No. 1 Lake Park',
-                        publisher:'张诗涵'
-                    },
-                    {
-                        actName: '搞蓝色9',
-                        actTime: "2019.11.11",
-                        actPlace: 'Sydney No. 1 Lake Park',
-                        publisher:'白龙飞'
-                    },{
-                        actName: '搞紫色10',
-                        actTime: "2019.11.11",
-                        actPlace: 'Sydney No. 1 Lake Park',
-                        publisher:'肖文淼'
-                    }
+                    // {
+                    //     actName: '银杏节马拉松',
+                    //     actTime: "2019.11.11",
+                    //     actPlace: 'New York No. 1 Lake Park',
+                    //     publisher:'白龙飞'
+                    // },
+                    // {
+                    //     actName: '双十一剁手大会',
+                    //     actTime: "2019.11.11",
+                    //     actPlace: 'London No. 1 Lake Park',
+                    //     publisher:'张诗涵'
+                    //
+                    // },
+                    // {
+                    //     actName: '班级聚餐吃火锅',
+                    //     actTime: "2019.11.11",
+                    //     actPlace: 'Sydney No. 1 Lake Park',
+                    //     publisher:'白龙飞'
+                    // },
+                    // {
+                    //     actName: '吃肯德基',
+                    //     actTime: "2019.11.11",
+                    //     actPlace: 'Sydney No. 1 Lake Park',
+                    //     publisher:'白龙飞'
+                    // },
+                    // {
+                    //     actName: '吃食堂',
+                    //     actTime: "2019.11.11",
+                    //     actPlace: 'Sydney No. 1 Lake Park',
+                    //     publisher:'张诗涵'
+                    // },
+                    // {
+                    //     actName: '搞黄色1',
+                    //     actTime: "2019.11.11",
+                    //     actPlace: 'Sydney No. 1 Lake Park',
+                    //     publisher:'肖文淼'
+                    // },
+                    // {
+                    //     actName: '搞红色2',
+                    //     actTime: "2019.11.11",
+                    //     actPlace: 'Sydney No. 1 Lake Park',
+                    //     publisher:'张诗涵'
+                    // },
+                    // {
+                    //     actName: '搞绿色3',
+                    //     actTime: "2019.11.11",
+                    //     actPlace: 'Sydney No. 1 Lake Park',
+                    //     publisher:'肖文淼'
+                    // },
+                    // {
+                    //     actName: '搞蓝色4',
+                    //     actTime: "2019.11.11",
+                    //     actPlace: 'Sydney No. 1 Lake Park',
+                    //     publisher:'白龙飞'
+                    // },{
+                    //     actName: '搞紫色5',
+                    //     actTime: "2019.11.11",
+                    //     actPlace: 'Sydney No. 1 Lake Park',
+                    //     publisher:'白龙飞'
+                    // },{
+                    //     actName: '搞黄色6',
+                    //     actTime: "2019.11.11",
+                    //     actPlace: 'Sydney No. 1 Lake Park',
+                    //     publisher:'肖文淼'
+                    // },
+                    // {
+                    //     actName: '搞红色7',
+                    //     actTime: "2019.11.11",
+                    //     actPlace: 'Sydney No. 1 Lake Park',
+                    //     publisher:'白龙飞'
+                    // },
+                    // {
+                    //     actName: '搞绿色8',
+                    //     actTime: "2019.11.11",
+                    //     actPlace: 'Sydney No. 1 Lake Park',
+                    //     publisher:'张诗涵'
+                    // },
+                    // {
+                    //     actName: '搞蓝色9',
+                    //     actTime: "2019.11.11",
+                    //     actPlace: 'Sydney No. 1 Lake Park',
+                    //     publisher:'白龙飞'
+                    // },{
+                    //     actName: '搞紫色10',
+                    //     actTime: "2019.11.11",
+                    //     actPlace: 'Sydney No. 1 Lake Park',
+                    //     publisher:'肖文淼'
+                    // }
                 ],
                 // 搜索后的展示数据
                 searchData: [],
@@ -132,6 +136,28 @@
                 dataCount:0,
                 pageNum:0 // 页数
             };
+        },
+
+        created(){
+          console.log("wdnmd");
+          var that = this;
+            this.$request
+                .get('/showMyAct',
+                    {
+                        params: {
+                            teaName: that.$store.state.teaName
+                        }
+                    })
+                .then(res=>{
+                    //console.log(res.data)
+                    that.list = res.data
+                    //console.log(that.list);
+                    that.handleListApproveHistory();
+                })
+
+
+
+
         },
 
         methods: {
@@ -179,9 +205,32 @@
                 else
                 {
                     setTimeout(() => {
-                        alert("nmsl");
+                        alert("无活动信息");
                     },10)
                     this.pageNum = 0;
+                }
+
+            },
+
+            toDelete(index){
+
+                var that = this;
+                var message = confirm("确定删除该活动吗？");
+                if(message){
+                    console.log("nm$l");
+                    console.log(that.historyData[index].actid)
+                    this.$request
+                        .post('/actDelete',
+                            {
+                                params: {
+                                    actid:that.historyData[index].actid
+                                }
+                            })
+                        .then(res=>{
+                            console.log(res);
+                            that.historyData.splice(index,1);
+                        })
+
                 }
 
             },
@@ -216,10 +265,6 @@
             }
 
 
-
-        },
-        created(){
-            this.handleListApproveHistory();
 
         }
     }

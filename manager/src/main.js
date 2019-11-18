@@ -7,7 +7,7 @@ import request from './request'
 import axios from 'axios'
 import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
-import store from './store/store';
+import {store} from './store/store';
 
 Vue.prototype.$request = request
 Vue.use(ViewUI);

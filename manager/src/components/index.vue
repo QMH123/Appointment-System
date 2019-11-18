@@ -3,7 +3,7 @@
     <div class="header">
       <img src="../img/xr.png" id="xr">
       <div class="greet">
-        {{greetMsg}}！ {{teacher}}老师
+        {{greetMsg}}！ {{this.$store.state.teaName}}老师
       </div>
       <div class="time">
         {{formatDateTime}}
@@ -33,8 +33,8 @@
             return {
                 dialogVisible: false,
                 date: new Date(),
-                timer: null,
-                teacher: '白龙飞'
+                timer: null
+
             }
         },
         computed:{
@@ -134,7 +134,7 @@
 
   .nav ul *{
     color: white;
-    font-size: 27px;
+    font-size: 20px;
     font-family: '微软雅黑';
     text-align: center;
     width: 80%;
@@ -177,20 +177,20 @@
   }
 
   .time{
-    width: 25%;
+    width: 50%;
     position: absolute;
     top: 30%;
-    left: 75%;
+    left: 50%;
     color: white;
     font-size: 22px;
     text-align: center;
   }
 
   .greet{
-    width: 25%;
+    width: 50%;
     position: absolute;
     top: 60%;
-    left: 75%;
+    left: 50%;
     color: white;
     font-size: 22px;
     text-align: center;
