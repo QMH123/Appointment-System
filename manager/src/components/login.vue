@@ -38,20 +38,26 @@
                 //             let data = {"teaNumber":that.teaNumber,"name":that.teaPass};
                 // console.log(JSON.stringify(data));
                 this.$request
-                    .get('/login',{
+                    .post('/login',{
                         params:{
                             "teaNumber":that.teaNumber,
                             "teaPass":that.teaPass
                         }
                     })
                     .then(res=>{
-                        console.log(res.data);
-                        if(res.data == 'null'){alert('账号密码错误!');}
-                        else{
-                            that.$router.push('/index')
+                        if(res.data == null){
+                            alert('账号或密码错误')
+                        }else{
+                            console.log(res.data[0].teaName);
+                            console.log(res.data[0].teaNumber);
+                            this.$store.commit('login',res.data)
+                            console.log(this.$store.state.teaName)
+                            console.log(this.$store.state.teaNumber)
+                            this.$router.push('/index')
                         }
 
                     })
+
 
             }
         }

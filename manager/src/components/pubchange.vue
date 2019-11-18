@@ -2,18 +2,24 @@
   <div class="box">
     <form action="" class="form">
       <ul class="col-sm-12">
-        <li class="input-group">活动主题<input type="text" v-model="actName" class="form-control"></li>
-        <li class="input-group">活动时间<input type="text" v-model="actTime" class="form-control"></li>
-        <li class="input-group">活动地点<input type="text" v-model="actAddress" class="form-control"></li>
+        <li class="input-group">活动主题<input type="text" v-model="activity.actTitle" class="form-control"></li>
+        <li class="input-group">活动时间<input type="text" v-model="activity.actTime" class="form-control"></li>
+        <li class="input-group">活动地点<input type="text" v-model="activity.actPlace" class="form-control"></li>
         <li >活动简介</li>
       </ul>
       <div class="input-group">
-        <textarea name="info" id="info" v-model="introduction" class="form-control" rows="8" ></textarea>
+        <textarea name="info" id="info" v-model="activity.actIntro" class="form-control" rows="8" ></textarea>
       </div>
-      <div class="btn-group">
-        <button @click="publish" class="btn  btn-primary">确认修改</button>
+      <div class="check-box-group">
+        <div class="check1"><input type="checkbox"  v-model="activity.isUrgent">紧急事件</div>
+        <div class="check2"> <input type="checkbox"  v-model="activity.isTop">是否置顶</div>
+
       </div>
+
     </form>
+    <div class="btn-group">
+      <button @click="pub" class="btn  btn-primary">确认修改</button>
+    </div>
 
   </div>
 </template>
@@ -23,16 +29,45 @@
         name: "pubchange",
         data(){
             return{
-                actName:'',
-                actTime:'',
-                actAddress:'',
-                introduction:''
+                activity:
+                    {
+                        actid:'',
+                        actTitle:'',
+                        actTime:'',
+                        actPlace:'',
+                        actIntro:'',
+                        teaName:'',
+                        isUrgent:0,
+                        isTop:0,
+                    }
+
             }
         },
         created() {
-            console.log(this.$route.params);//这个是router传递过来的值
-            this.actName = this.$route.params.actName;
-            this.actTime = this.$route.params.actTime;
+            //console.log(this.$route.params);//这个是router传递过来的值
+            this.activity.teaName = this.$store.state.teaName;
+            this.activity.actTitle = this.$route.params.actTitle;
+            this.activity.actTime = this.$route.params.actTime;
+            this.activity.actPlace = this.$route.params.actPlace;
+            this.activity.actIntro = this.$route.params.actIntro;
+            this.activity.actid = this.$route.params.actid;
+        },
+        methods:{
+            pub: function () {
+                var that = this;
+                 console.log(that.activity);
+                this.$request
+                    .post('/updateAct',
+                        {
+                            params: {
+                                activity:that.activity
+                            }
+                        })
+                    .then(res=>{
+                        console.log(res.data)
+
+                    })
+            }
         }
     }
 </script>
@@ -95,5 +130,18 @@
   .input-group > textarea{
     resize:none;
     height: 250px;
+  }
+
+  .check-box-group{
+    position: relative;
+    top: 30px;
+  }
+
+
+
+  .btn-group{
+    position: relative;
+    left: 60%;
+    top: 77%;
   }
 </style>
