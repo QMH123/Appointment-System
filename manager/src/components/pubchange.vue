@@ -51,6 +51,8 @@
             this.activity.actPlace = this.$route.params.actPlace;
             this.activity.actIntro = this.$route.params.actIntro;
             this.activity.actid = this.$route.params.actid;
+            this.activity.isUrgent = this.$route.params.isUrgent;
+            this.activity.isTop = this.$route.params.isTop;
         },
         methods:{
             pub: function () {
@@ -67,6 +69,7 @@
                         console.log(res.data)
 
                     })
+                this.$router.push('/changeInf')
             }
         }
     }
