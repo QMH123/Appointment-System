@@ -15,9 +15,9 @@
       </div>
 
       <ul class="navbar-nav">
-        <li><router-link  :to="{name : 'pubActLink'}" class="nav-link">发布活动</router-link></li>
-        <li><router-link  :to="{name : 'historyLink'}" class="nav-link">查询历史活动</router-link></li>
-        <li><router-link  :to="{name : 'changeInfLink'}" class="nav-link">修改我的发布</router-link></li>
+        <li><router-link  :to="{name : 'pubActLink'}" class="nav-link"><p>发布活动</p></router-link></li>
+        <li><router-link  :to="{name : 'historyLink'}" class="nav-link"><p>查询历史活动</p></router-link></li>
+        <li><router-link  :to="{name : 'changeInfLink'}" class="nav-link"><p>修改我的发布</p></router-link></li>
       </ul>
     </div>
     <div id="Inf">
@@ -138,7 +138,7 @@
     font-family: '微软雅黑';
     text-align: center;
     width: 80%;
-    height: 30%;
+    height: 40%;
     position: relative;
     left: 10%;
     list-style: none;
@@ -186,7 +186,7 @@
     text-align: center;
   }
 
-  .greet{
+  .greet {
     width: 50%;
     position: absolute;
     top: 60%;
@@ -195,6 +195,22 @@
     font-size: 22px;
     text-align: center;
   }
+
+
+  .nav-link:hover{
+    background-color: #0043EF;
+    animation: hoverChange 0.2s linear;
+  }
+
+  @keyframes hoverChange {
+    0%{
+      background-color: #1f7ae1;
+    }
+    100%{
+      background-color: #0043EF;
+    }
+  }
+
 
 
 </style>

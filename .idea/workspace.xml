@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="63d076fc-d7f8-48a4-9b0d-e9eac3a066e1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/src/components/changeInf.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/changeInf.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manager/src/components/history.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/history.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/components/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/components/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manager/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/manager/src/router/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -117,7 +118,8 @@
       <workItem from="1573965248504" duration="96000" />
       <workItem from="1573965945486" duration="47000" />
       <workItem from="1573990656002" duration="85000" />
-      <workItem from="1574006811763" duration="1603000" />
+      <workItem from="1574006811763" duration="1848000" />
+      <workItem from="1574083680855" duration="1412000" />
     </task>
     <servers />
   </component>
