@@ -11,7 +11,7 @@
         <textarea name="info" id="info" v-model="introduction" class="form-control" rows="8" ></textarea>
       </div>
       <div class="btn-group">
-        <button @click="publish" class="btn  btn-primary">发布活动</button>
+        <button @click="publish" class="btn  btn-primary">确认修改</button>
       </div>
     </form>
 
