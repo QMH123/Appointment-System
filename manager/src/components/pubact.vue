@@ -14,12 +14,16 @@
           <label>
             <input type="checkbox" v-model="isSerious">紧急事件
           </label>
-        </div>
-        <div class="btn-group">
-          <button  @click="publish" class="btn  btn-primary">发布活动</button>
+          <label>
+            <input type="checkbox" v-model="isTop">是否置顶
+          </label>
         </div>
 
+
       </form>
+      <div class="btn-group" id="btn">
+        <button   @click="publish" class="btn  btn-primary">发布活动</button>
+      </div>
 
   </div>
 </template>
@@ -30,6 +34,7 @@
         name: "pubact",
         data(){
             return{
+                isTop:false,
                 theme:'',
                 time:'',
                 address:'',
@@ -60,17 +65,19 @@
                     alert("时间不能为空，请更改信息.")
                     return;
                 }
-                let data = {"theme":this.theme,"time":this.time,
-                            "address":this.address,"introduction":this.introduction,
-                            "publisher": this.publisher , "isSerious" : this.isSerious,
-                            "publish_time": publish_time};
+                let data = {"actTitle":this.theme,"actTime":this.time,
+                            "actPlace":this.address,"actIntro":this.introduction,
+                            "teaName": this.$store.state.teaName, "isUrgent" : this.isSerious,
+                            "isTop": this.isTop
+                              };
                 console.log(data);
-                // this.$request
-                //     .post('/login',data)
-                //     .then(res=>{
-                //
-                //         console.log(res);
-                //     })
+                this.$request
+                    .post('/upAct',data)
+                    .then(res=>{
+                        confirm("添加成功");
+                        console.log(res);
+                    })
+
 
             }
 
@@ -141,6 +148,11 @@
 
   #checkbox{
     margin-top: 20px;
+  }
+
+  #btn{
+    margin-top: 60%;
+    margin-left: 10%;
   }
 
 

@@ -9,15 +9,17 @@
               <th>活动名称</th>
               <th>活动时间</th>
               <th>活动地点</th>
+              <th>发布人</th>
               <th>详细信息</th>
           </tr>
         </thead>
           <tbody>
             <tr v-for="data in historyData">
-              <td>{{data.actName}}</td>
+              <td>{{data.actTitle}}</td>
               <td>{{data.actTime}}</td>
               <td>{{data.actPlace}}</td>
-              <td><router-link :to="{name : 'moreInfLink' ,params: {actName : data.actName , actTime : data.actTime}}">详细信息</router-link></td>
+              <td>{{data.teaName}}</td>
+              <td><router-link :to="{name : 'moreInfLink' ,params: {actName : data.actTitle , actTime : data.actTime, actInf: data.actIntro}}">详细信息</router-link></td>
             </tr>
           </tbody>
       </table>
@@ -25,6 +27,7 @@
     </div>
 </template>
 <script>
+    import axios from 'axios'
     export default {
         data () {
             return {
@@ -35,48 +38,64 @@
                         actName: '张三',
                         actTime: "2019.11.11",
                         actPlace: 'New York No. 1 Lake Park',
+                        actInf:"今天是个好日子",
+                        teaName : "白龙飞"
 
                     },
                     {
                         actName: '秦墨涵🐂🍺9',
                         actTime: "2019.11.11",
                         actPlace: 'London No. 1 Lake Park',
+                        actInf:"今天是个好日子",
+                        teaName : "白龙飞"
 
                     },
                     {
                         actName: '秦墨涵🐂🍺7',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
+                        actInf:"今天是个好日子",
+                        teaName : "白龙飞"
 
                     },
                     {
                         actName: '秦墨涵🐂🍺',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
+                        actInf:"今天是个好日子",
+                        teaName : "白龙飞"
 
                     },
                     {
                         actName: '秦墨涵🐂🍺1',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
+                        actInf:"今天是个好日子",
+                        teaName : "白龙飞"
 
                     },
                     {
                         actName: '秦墨涵🐂🍺2',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
+                        actInf:"今天是个好日子",
+                        teaName : "白龙飞"
 
                     },
                     {
                         actName: '秦墨涵🐂🍺3',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
+                        actInf:"今天是个好日子",
+                        teaName : "白龙飞"
 
                     },
                     {
                         actName: 'Joe Black',
                         actTime: "2019.11.11",
                         actPlace: 'Sydney No. 1 Lake Park',
+                        actInf:"今天是个好日子",
+                        teaName : "白龙飞"
 
                     }
                 ],
@@ -159,8 +178,15 @@
 
         },
         created(){
-            this.handleListApproveHistory();
-            console.log(this.pageNum);
+            this.$request.get('/browse')
+                .then(res => {
+                    console.log(res);
+                    this.data9 = res.data;
+                    this.handleListApproveHistory();
+                    console.log(this.pageNum);
+                })
+
+
         },
         computed:{
 

@@ -3,6 +3,7 @@
     <div id="theActInf">
       <h2 id="actName">{{actName}}</h2>
       <p id="actTime">时间：{{actTime}}</p>
+      <div id="actInf">详情: {{actInf}}</div>
     </div>
       <h5>人员名单如下:</h5>
       <Table :columns="columns8" :data="data7" size="large" ref="table"></Table>
@@ -18,6 +19,7 @@
             return {
                 actName : "",
                 actTime : "",
+                actInf:"",
                 columns8: [
                     {
                         "title": "报名同学名字",
@@ -100,6 +102,7 @@
             console.log(this.$route.params);//这个是router传递过来的值
             this.actName = this.$route.params.actName;
             this.actTime = this.$route.params.actTime;
+            this.actInf = this.$route.params.actInf;
         }
     }
 </script>
@@ -107,11 +110,15 @@
   #theActInf{
     margin-top: 1% ;
     margin-left: 12%;
+    position: absolute;
+    left: 40%;
+    z-index: 1;
   }
 
   h5{
 
     margin-bottom: 20px;
   }
+
 
 </style>
