@@ -31,73 +31,10 @@
     export default {
         data () {
             return {
+                theTotalLength:0,
                 searchData:[],
                 search:"",
                 data9: [
-                    {
-                        actName: '张三',
-                        actTime: "2019.11.11",
-                        actPlace: 'New York No. 1 Lake Park',
-                        actInf:"今天是个好日子",
-                        teaName : "白龙飞"
-
-                    },
-                    {
-                        actName: '秦墨涵🐂🍺9',
-                        actTime: "2019.11.11",
-                        actPlace: 'London No. 1 Lake Park',
-                        actInf:"今天是个好日子",
-                        teaName : "白龙飞"
-
-                    },
-                    {
-                        actName: '秦墨涵🐂🍺7',
-                        actTime: "2019.11.11",
-                        actPlace: 'Sydney No. 1 Lake Park',
-                        actInf:"今天是个好日子",
-                        teaName : "白龙飞"
-
-                    },
-                    {
-                        actName: '秦墨涵🐂🍺',
-                        actTime: "2019.11.11",
-                        actPlace: 'Sydney No. 1 Lake Park',
-                        actInf:"今天是个好日子",
-                        teaName : "白龙飞"
-
-                    },
-                    {
-                        actName: '秦墨涵🐂🍺1',
-                        actTime: "2019.11.11",
-                        actPlace: 'Sydney No. 1 Lake Park',
-                        actInf:"今天是个好日子",
-                        teaName : "白龙飞"
-
-                    },
-                    {
-                        actName: '秦墨涵🐂🍺2',
-                        actTime: "2019.11.11",
-                        actPlace: 'Sydney No. 1 Lake Park',
-                        actInf:"今天是个好日子",
-                        teaName : "白龙飞"
-
-                    },
-                    {
-                        actName: '秦墨涵🐂🍺3',
-                        actTime: "2019.11.11",
-                        actPlace: 'Sydney No. 1 Lake Park',
-                        actInf:"今天是个好日子",
-                        teaName : "白龙飞"
-
-                    },
-                    {
-                        actName: 'Joe Black',
-                        actTime: "2019.11.11",
-                        actPlace: 'Sydney No. 1 Lake Park',
-                        actInf:"今天是个好日子",
-                        teaName : "白龙飞"
-
-                    }
                 ],
                 pageSize : 5,//每页的信息条数
                 ajaxHistoryData:[],//初始化信息条数
@@ -107,6 +44,15 @@
             }
         },
         methods:{
+            judgePageNum(length) { //获取页数
+                if (this.theTotalLength % this.pageSize === 0) {
+                    this.pageNum = (this.theTotalLength / this.pageSize) * 10;
+                } else if (this.theTotalLength > this.pageSize) {
+                    this.pageNum = (Math.trunc((this.theTotalLength / this.pageSize)) + 1) * 10;
+                } else {
+                    this.pageNum = 1 * 10;
+                }
+            },
             //获取历史记录消息
             handleListApproveHistory(){
                 this.ajaxHistoryData = this.data9;
@@ -125,9 +71,16 @@
 
             changePage(index){
                 console.log(index);
-                let _start = (index - 1) * this.pageSize;
-                  let _end = index * this.pageSize;
-                this.historyData = this.ajaxHistoryData.slice(_start,_end);
+                let Index = index;
+                this.$request.get('/browse',{ params : {
+                    index : Index
+                    } }).
+                    then(res => {
+                        console.log("获取页码",res);
+                        this.historyData = res.data.list;
+                }).catch(err => {
+                    console.log(err);
+                })
             },
             Search() {
                 // search 是 v-model="search" 的 search
@@ -177,15 +130,20 @@
 
 
         },
-        created(){
+        beforeCreate(){
             this.$request.get('/browse')
                 .then(res => {
-                    console.log(res);
-                    this.data9 = res.data;
-                    this.handleListApproveHistory();
-                    console.log(this.pageNum);
+                    console.log("res",res);
+                    this.data9 = res.data.list;
+                    this.theTotalLength = res.data.length;
+                    console.log(this.data9);
+                    this.historyData = this.data9; //展示页面
+                    this.judgePageNum(res.data.length);
                 })
 
+
+        },
+        created(){
 
         },
         computed:{
