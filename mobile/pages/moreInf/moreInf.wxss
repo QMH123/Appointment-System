@@ -58,3 +58,8 @@
   right: 40rpx;
 }
 
+
+#card{
+  max-width: 600rpx;
+  margin:0 auto;
+}

@@ -8,14 +8,23 @@
     </view>
 <!-- 放日历 暂时先留着 -->
   </view>
-  <view id="mainContent"  >
-      <view wx:for="{{Inf}}" id="subContent" bindtap="toGetMoreInf" data-Page-id="{{item.pageId}}"><!--这括号不要忘记了-->
+  <view id="mainContent" wx:for="{{Inf}}" >
+    <i-card title="{{item.actTitle}}" extra="{{item.actTime}}" bindtap="toGetMoreInf" i-class="card" >
+      <view slot="content">{{item.actIntro}}</view>
+      <view  wx:if="{{item.isSerious}}" style="color:red;" slot="content">紧急事件</view>
+      <view slot="footer">{{item.actPlace}}</view>
+    </i-card>
+  </view>
+  <!-- <view id="mainContent"  >
+      <view wx:for="{{Inf}}" id="subContent" bindtap="toGetMoreInf" data-Page-id="{{item.pageId}}">这括号不要忘记了 -->
       <!-- <image src="../../image/sao.gif"></image> -->
-      <view id="actTitle" class="ssubContent">{{item.actTitle}}</view>
+      <!-- <view id="actTitle" class="ssubContent">{{item.actTitle}}</view>
       <view id="{{item.isSerious == true ? 'actTime-red': 'actTime'}}" class="ssubContent" >{{item.actTime}}</view>
       <view id="LINE"></view>
       <view id="actIntro" class="ssubContent">{{item.actIntro}}</view>
       <view id="actPlace" class="ssubContent">地点:{{item.actPlace}}</view>
       </view>
-  </view>
+  </view> -->
+
+  
 </view>
