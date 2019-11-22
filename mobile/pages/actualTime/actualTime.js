@@ -13,30 +13,37 @@ Page({
       actPlace:"图书馆求实厅",
       pageId:1,
       isSerious: false,
+      actPlace: "图书馆求实厅",
       help:''
     },
       {
+        actTitle:"秦墨涵🐂🍺",
         actTime: "2019.10.20",
         actIntro: "毛海淘有点骚",
         actPlace: "电子科技大学",
         pageId:2,
         isSerious: true,
+        actPlace: "图书馆求实厅",
         help: ''
       },
       {
+        actTitle: "秦墨涵🐂🍺",
         actTime: "2019.10.21",
         actIntro: "你有点骚有点骚",
         actPlace: "电子科技大学",
         pageId:3,
         isSerious: false,
+        actPlace: "图书馆求实厅",
         help: ''
       },
       {
+        actTitle: "秦墨涵🐂🍺",
         actTime: "2019.10.22",
         actIntro: "你有点骚有点骚",
         actPlace: "电子科技大学",
         pageId:4,
         isSerious: true,
+        actPlace: "图书馆求实厅",
         help: ''
       }
     

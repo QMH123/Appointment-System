@@ -1,5 +1,5 @@
 <view id="HeadBox">
-  <view id="mainInf">
+  <!-- <view id="mainInf">
     <view id="title" class="Inf">{{Inf.actTitle}}</view>
       <view id="flex">
         <view id="shortInf">
@@ -9,6 +9,14 @@
         </view>
         <view id="intro" ><view>简介:</view>{{Inf.actIntro}}</view>
       </view>
+  </view> -->
+  <view id="title" class="Inf">
+    {{Inf.actTitle}}
   </view>
+  <i-card title="地点: {{Inf.actPlace}}" extra="时间: {{Inf.actTime}}" style="font-size:20px;">
+    <view slot="content">{{Inf.actIntro}}</view>
+  </i-card>
   <button id="subscribe" bindtap="goSubscribe">预约</button>
 </view>
+
+
