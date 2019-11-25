@@ -8,10 +8,10 @@
     </view>
 <!-- 放日历 暂时先留着 -->
   </view>
-  <view id="mainContent" wx:for="{{Inf}}" >
-    <i-card title="{{item.actTitle}}" extra="{{item.actTime}}" bindtap="toGetMoreInf" i-class="card" >
+  <view id="mainContent" wx:for="{{Inf}}" data-Page-id="{{item.actid}}" bindtap="toGetMoreInf">
+    <i-card title="{{item.actTitle}}" extra="{{item.actTime}}"  i-class="card" >
       <view slot="content">{{item.actIntro}}</view>
-      <view  wx:if="{{item.isSerious}}" style="color:red;" slot="content">紧急事件</view>
+      <view  wx:if="{{item.isTop}}" style="color:red;" slot="content">紧急事件</view>
       <view slot="footer">{{item.actPlace}}</view>
     </i-card>
   </view>

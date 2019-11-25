@@ -6,32 +6,30 @@ Page({
    */
   data: {
     pageId:0,
-    Inf : {
-      actid:1,
-      actTime:"2019.10.19",
-      actTitle: "成电讲坛",
-      actIntro: "他一直致力于人工智能与脑科学的”跨界整合研发用意念控制的游戏延缓老年痴呆症探索大脑与音乐的不解之缘他是Roy John Award的首位亚洲获得者也是一名优秀的长江学者在定量脑电图和神经测量学有成就他就是我电教授尧德中，10月21日晚7：00，让他带我们一起走进国际化的视野",
-      actPeople:"deep dark fantasy",
-      actPlace:"图书馆求实厅",
-      
-    }
+    Inf : []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
     console.log(options);
     this.setData({
-      pageId : options.id
+      actId : options.id
     })
-    console.log(this.data.pageId);
+    console.log(this.data.actId);
     //console.log("学号为：" + app.globalData.userStudyNum);
     wx.request({
-      url: '',
+      url: 'http://148.70.73.191:4396/actSignle',
       data:{
-        userStudyNum: app.globalData.userStudyNum,
-        pageId : options.id
+        actid: options.id
+      },
+      success(res){
+        console.log(res);
+        that.setData({
+          Inf : res.data
+        })
       }
     })
   },
@@ -119,9 +117,6 @@ Page({
         console.log(res);
         if(res.confirm === true)
         {
-          
-
-
           wx.request({
             url: 'http://148.70.73.191:4396/signup',
             data:{//活动id与学号传给后端N
