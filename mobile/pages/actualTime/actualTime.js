@@ -6,48 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    Inf:[{
-      actTime:"2019.10.19",
-      actTitle:"成电讲坛",
-      actIntro: "他一直致力于人工智能与脑科学的”跨界整合研发用意念控制的游戏延缓老年痴呆症探索大脑与音乐的不解之缘他是Roy John Award的首位亚洲获得者也是一名优秀的长江学者在定量脑电图和神经测量学有成就他就是我电教授尧德中，10月21日晚7：00，让他带我们一起走进国际化的视野",
-      actPlace:"图书馆求实厅",
-      pageId:1,
-      isSerious: false,
-      actPlace: "图书馆求实厅",
-      help:''
-    },
-      {
-        actTitle:"秦墨涵🐂🍺",
-        actTime: "2019.10.20",
-        actIntro: "毛海淘有点骚",
-        actPlace: "电子科技大学",
-        pageId:2,
-        isSerious: true,
-        actPlace: "图书馆求实厅",
-        help: ''
-      },
-      {
-        actTitle: "秦墨涵🐂🍺",
-        actTime: "2019.10.21",
-        actIntro: "你有点骚有点骚",
-        actPlace: "电子科技大学",
-        pageId:3,
-        isSerious: false,
-        actPlace: "图书馆求实厅",
-        help: ''
-      },
-      {
-        actTitle: "秦墨涵🐂🍺",
-        actTime: "2019.10.22",
-        actIntro: "你有点骚有点骚",
-        actPlace: "电子科技大学",
-        pageId:4,
-        isSerious: true,
-        actPlace: "图书馆求实厅",
-        help: ''
-      }
-    
-      ],
+    Inf:[],
       nowTime: {
         nowDay : "",  
         nowDate: "",
@@ -95,26 +54,28 @@ Page({
       var that = this;
 
 
-      wx.request({
-        url: '',
-        data:{
-          date_id : this.data.choosenId
-        //可能还有用户id 后期来决定
-        },
-        header:{
-          'content-type' : 'json'
-        },
-        success(res){
-          that.setData({
-            Inf : backInf
-          })
-        }
+    wx.request({
+      url: 'http://148.70.73.191:4396/getAct',
+      // data:{
+      //   date_id : this.data.choosenId
+      // //可能还有用户id 后期来决定
+      // },
+      header: {
+        'content-type': 'json'
+      },
+      success: function (res) {
+        console.log(res.data);
+        that.setData({
+          Inf: res.data
+        });
+        that.regExp();//先排序 排序做好准备 
+        that.sortInf();//排序 产生初始排序数据
+        that.sortInfSerious();// 排序 产生紧急事件排序数据
+      }
 
-      });
+    });
 
-    this.regExp();//先排序 排序做好准备 
-    this.sortInf();//排序 产生初始排序数据
-    this.sortInfSerious();// 排序 产生紧急事件排序数据
+       
   },
 
   /**
@@ -169,9 +130,9 @@ Page({
   toGetMoreInf(res){
     console.log(res);
     var that = this;
-    var Pageid = res.currentTarget.dataset.pageId;
+    var actid = res.currentTarget.dataset.pageId;
     wx.navigateTo({
-      url: '../moreInf/moreInf?id='+Pageid,
+      url: '../moreInf/moreInf?id='+actid,
     })
   },
 
@@ -179,12 +140,14 @@ Page({
 
   regExp(){
     var regexp = /\d+/g;
+    
     this.data.Inf.forEach(function (x) {
       console.log(x);
       x.help = x.actTime.match(regexp);
       x.help = x.help[0] + x.help[1] + x.help[2];
     })
     console.log(this.data.Inf);
+    
   },
 
   changeButton(res){
@@ -194,6 +157,7 @@ Page({
     {
       //排序算法
       console.log("nihao");
+      console.log(hasSortedInf);
       that.setData({
         Inf : this.data.hasSortedInf
       })
@@ -239,6 +203,7 @@ Page({
     let helpInf;//为了防止源数据被伤害，拷贝一份。
     var realInf = [];//真正的数据存在这个数组里
     helpInf = this.data.originInf.concat();//这里不能直接赋值，否则数据连锁，采用数据深拷贝
+
     console.log("曾经的original:",this.data.originInf);
     // debugger
     var i = 0 ;
