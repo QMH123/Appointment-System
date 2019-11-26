@@ -5,7 +5,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex);
 
 
-export const store = new Vuex.Store({
+export var store = new Vuex.Store({
   state:{
       teaName:'',
       teaNumber:''

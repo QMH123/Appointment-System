@@ -13,6 +13,15 @@
           return {
 
           }
+      },
+      created(){
+          // debugger
+          if (sessionStorage.getItem("InfState")){
+              this.$store.replaceState(Object.assign({},this.$store.state,JSON.parse(sessionStorage.getItem("InfState"))));//用本地session寸全局变量信息
+          }
+          window.addEventListener("beforeunload", () => {
+              sessionStorage.setItem("InfState", JSON.stringify(this.$store.state))//刷新之前的相应事件
+          })
       }
 
   })
