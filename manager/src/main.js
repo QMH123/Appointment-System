@@ -14,14 +14,17 @@ Vue.use(ViewUI);
 Vue.use(axios);
 
 
+
+
 // router.beforeEach((to, from, next) => {
-//     if (to.path !== '/login'){
-//       alert("秦墨涵🐂🍺！");
-//       next('/login');
-//     }
-//     else{
-//       next();
-//     }
+//     // if (store.state.teaName !== ""){
+//     //   next();
+//     // }
+//     // else
+//     // {
+//     //   alert("请先登录!");
+//       // next("/login");
+//     // }
 // })
 
 Vue.config.productionTip = false

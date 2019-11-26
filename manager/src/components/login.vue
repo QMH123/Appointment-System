@@ -27,10 +27,29 @@
         data() {
             return {
                     "teaNumber": "",
-                    "teaPass": ""
+                    "teaPass": "",
+                     teaName : "" //这里设置是为了判定和缓存是否一样 如果不一样 则进行替换
 
             };
         },
+        beforeRouteLeave(to,from,next)//如果要保持刷新不变 则利用session使用组件守卫，别用全局守卫，全局守卫不好控制
+        {
+            debugger
+                // this.$store.replaceState(Object.assign({},this.$store.state,JSON.parse(sessionStorage.getItem("InfState"))));
+            sessionStorage.setItem("InfState",Object.assign({},JSON.stringify(this.$route.state)));//这里可以不用判断，如果不等赋值是正确的，如果相等，赋值不影响，所以可以不用if判断
+            let localTeaName = this.$store.state.teaName;
+            console.log(localTeaName);
+            debugger
+            if (localTeaName){
+                alert(localTeaName + "老师，您好！");
+                next();
+            }
+            else{
+                alert("请先进行登录！");
+                next("/login");
+            }
+        }
+        ,
         methods: {
             onSubmit:function() {
                 //console.log("wdnmd");
@@ -50,6 +69,7 @@
                         }else{
                             console.log(res.data[0].teaName);
                             console.log(res.data[0].teaNumber);
+                            this.teaName = res.data[0].teaName;//赋值
                             this.$store.commit('login',res.data)
                             console.log(this.$store.state.teaName)
                             console.log(this.$store.state.teaNumber)

@@ -142,22 +142,26 @@ Page({
     var regexp = /\d+/g;
     
     this.data.Inf.forEach(function (x) {
-      console.log(x);
       x.help = x.actTime.match(regexp);
       x.help = x.help[0] + x.help[1] + x.help[2];
     })
     console.log(this.data.Inf);
-    
+  
+  
   },
 
+  //按钮相应事件
   changeButton(res){
     console.log(res);
+    debugger
     var that = this;
+    debugger
     if(res.detail.value)//开启紧急情况
     {
       //排序算法
       console.log("nihao");
-      console.log(hasSortedInf);
+      console.log(this.data.hasSortedInf);
+      debugger
       that.setData({
         Inf : this.data.hasSortedInf
       })
@@ -209,7 +213,7 @@ Page({
     var i = 0 ;
     for (var i = 0; i <= helpInf.length - 1; i++)
     {
-      if( helpInf[i].isSerious )
+      if( helpInf[i].isTop )
       {
         var helpYuansu = helpInf[i]; 
         if(i === 0 )//splice不能对头部使用

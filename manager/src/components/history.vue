@@ -131,7 +131,12 @@
 
         },
         beforeCreate(){
-            this.$request.get('/browse')
+            this.$request.get('/browse',{
+                params:
+                    {
+                        index:1
+                    }
+            })
                 .then(res => {
                     console.log("res",res);
                     this.data9 = res.data.list;
