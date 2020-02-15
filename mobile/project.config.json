@@ -15,7 +15,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.8.3",
 	"appid": "wx8b9fc16bd5659533",
-	"projectname": "%E9%A2%84%E7%BA%A6%E7%B3%BB%E7%BB%9F",
+	"projectname": "mobile",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
